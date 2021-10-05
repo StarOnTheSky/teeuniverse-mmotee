@@ -1,0 +1,27 @@
+.vscode/**
+bam
+.bam
+/config.lua
+/datasrc/__pycache__
+/datasrc/*.pyc
+/objs
+#CMake 好像没法生成这些文件
+#src/game/generated
+/*.dll
+build/**
+CMakeFiles/**
+*.cmake
+/crapnet*
+/dilate*
+/fake_server*
+/map_resave*
+/map_version*
+/mastersrv*
+/packetgen*
+/tileset_border*
+/versionsrv*
+/infclass_client*
+/infclass_srv*
+/infclass_editor*
+/autoexec.cfg
+.idea/**

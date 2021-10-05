@@ -1,0 +1,8 @@
+dependencies:
+  pre:
+    - sudo apt-get update -y
+    - sudo apt-get install -y libsdl2-dev libharfbuzz-dev
+
+test:
+  override:
+    - cmake . && make && make test && sudo make install
