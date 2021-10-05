@@ -10,7 +10,7 @@ bam
 /*.dll
 build/**
 CMakeFiles/**
-*.cmake
+/*.cmake
 /crapnet*
 /dilate*
 /fake_server*
