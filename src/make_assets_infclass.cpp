@@ -249,6 +249,18 @@ int main(int argc, char* argv[])
 			pAsset->SetIndexDescription(SubPath, "Enter in this entity added bonuses clan top 3");
 			pAsset->SetIndexBorderIndex(SubPath, 15);
 			pAsset->SetIndexBorderColor(SubPath, vec4(11.0f/255.0f, 173.0f/255.0f, 0.0f, 1.0f));	
+			
+			SubPath = CAsset_ZoneType::SubPath_Index(pAsset->AddIndex());
+			pAsset->SetIndexTitle(SubPath, "进入太空");
+			pAsset->SetIndexDescription(SubPath, "进入太空");
+			pAsset->SetIndexBorderIndex(SubPath, 19);
+			pAsset->SetIndexBorderColor(SubPath, vec4(1.0f, 164.0f/255.0f, 0.0f, 1.0f));
+			
+			SubPath = CAsset_ZoneType::SubPath_Index(pAsset->AddIndex());
+			pAsset->SetIndexTitle(SubPath, "离开太空");
+			pAsset->SetIndexDescription(SubPath, "离开太空");
+			pAsset->SetIndexBorderIndex(SubPath, 20);
+			pAsset->SetIndexBorderColor(SubPath, vec4(1.0f, 164.0f/255.0f, 0.0f, 1.0f));
 		}
 		//EntityType, No Register Spawn
 		{
