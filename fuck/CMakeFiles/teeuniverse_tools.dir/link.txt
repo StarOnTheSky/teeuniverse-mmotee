@@ -1,0 +1,2 @@
+/usr/bin/ar qc build/release/linux/lib/libteeuniverse_tools.a  CMakeFiles/teeuniverse_tools.dir/src/client/loading_tools.cpp.o CMakeFiles/teeuniverse_tools.dir/src/external/pnglite/pnglite.c.o
+/usr/bin/ranlib build/release/linux/lib/libteeuniverse_tools.a

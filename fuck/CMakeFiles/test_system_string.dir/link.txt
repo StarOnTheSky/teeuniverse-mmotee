@@ -1,0 +1,1 @@
+/usr/bin/c++   -std=c++11 -O3 -DNDEBUG  -rdynamic CMakeFiles/test_system_string.dir/src/unittest/system_string.cpp.o  -o build/release/linux/test/test_system_string  build/release/linux/lib/libteeuniverse_shared.a -licui18n -licuuc 

@@ -136,117 +136,117 @@ int main(int argc, char* argv[])
 			CSubPath SubPath;
 			
 			CAsset_ZoneType* pAsset = pKernel->AssetsManager()->NewAsset_Hard<CAsset_ZoneType>(&AssetPath, PackageId);
-			pAsset->SetName("icBonus");
+			pAsset->SetName("MMOTee区域");
 			pAsset->SetImagePath(ImageZonesBonusPath);
 			
 			SubPath = CAsset_ZoneType::SubPath_Index(pAsset->AddIndex());
-			pAsset->SetIndexTitle(SubPath, "No bonus");
+			pAsset->SetIndexTitle(SubPath, "无效果");
 			
 			SubPath = CAsset_ZoneType::SubPath_Index(pAsset->AddIndex());
-			pAsset->SetIndexTitle(SubPath, "+5/min");
+			pAsset->SetIndexTitle(SubPath, "没用的");
 			pAsset->SetIndexDescription(SubPath, "Humans get +5 points each time they accumulated 60 seconds by staying inside this zone");
 			pAsset->SetIndexBorderIndex(SubPath, 1);
 			pAsset->SetIndexBorderColor(SubPath, vec4(148.0f/255.0f, 0.0f, 1.0f, 1.0f));
 
 			SubPath = CAsset_ZoneType::SubPath_Index(pAsset->AddIndex());
-			pAsset->SetIndexTitle(SubPath, "Shop");
-			pAsset->SetIndexDescription(SubPath, "Enter in this entity open shop");
+			pAsset->SetIndexTitle(SubPath, "商店");
+			pAsset->SetIndexDescription(SubPath, "进入此区域打开商店");
 			pAsset->SetIndexBorderIndex(SubPath, 2);
 			pAsset->SetIndexBorderColor(SubPath, vec4(11.0f/255.0f, 173.0f/255.0f, 0.0f, 1.0f));
 
 			SubPath = CAsset_ZoneType::SubPath_Index(pAsset->AddIndex());
-			pAsset->SetIndexTitle(SubPath, "Disable-PVP");
-			pAsset->SetIndexDescription(SubPath, "Enter in this entity disabled PVP");
+			pAsset->SetIndexTitle(SubPath, "禁止PVP");
+			pAsset->SetIndexDescription(SubPath, "进入此区域关闭PVP");
 			pAsset->SetIndexBorderIndex(SubPath, 3);
 			pAsset->SetIndexBorderColor(SubPath, vec4(148.0f/255.0f, 0.0f, 1.0f, 1.0f));
 
 			SubPath = CAsset_ZoneType::SubPath_Index(pAsset->AddIndex());
-			pAsset->SetIndexTitle(SubPath, "Enable-PVP");
-			pAsset->SetIndexDescription(SubPath, "Enter in this entity enabled PVP");
+			pAsset->SetIndexTitle(SubPath, "允许PVP");
+			pAsset->SetIndexDescription(SubPath, "进入此区域开启PVP");
 			pAsset->SetIndexBorderIndex(SubPath, 4);
 			pAsset->SetIndexBorderColor(SubPath, vec4(148.0f/255.0f, 0.0f, 1.0f, 1.0f));
 
 			SubPath = CAsset_ZoneType::SubPath_Index(pAsset->AddIndex());
-			pAsset->SetIndexTitle(SubPath, "Chair-1");
-			pAsset->SetIndexDescription(SubPath, "Chair added min bonuses");
+			pAsset->SetIndexTitle(SubPath, "椅子-1");
+			pAsset->SetIndexDescription(SubPath, "给与最少的奖励");
 			pAsset->SetIndexBorderIndex(SubPath, 5);
 			pAsset->SetIndexBorderColor(SubPath, vec4(11.0f/255.0f, 173.0f/255.0f, 0.0f, 1.0f));
 
 			SubPath = CAsset_ZoneType::SubPath_Index(pAsset->AddIndex());
-			pAsset->SetIndexTitle(SubPath, "Chair-2");
-			pAsset->SetIndexDescription(SubPath, "Chair added normal bonuses");
+			pAsset->SetIndexTitle(SubPath, "椅子-2");
+			pAsset->SetIndexDescription(SubPath, "给与正常的奖励");
 			pAsset->SetIndexBorderIndex(SubPath, 6);
 			pAsset->SetIndexBorderColor(SubPath, vec4(11.0f/255.0f, 173.0f/255.0f, 0.0f, 1.0f));
 
 			SubPath = CAsset_ZoneType::SubPath_Index(pAsset->AddIndex());
-			pAsset->SetIndexTitle(SubPath, "Craft");
-			pAsset->SetIndexDescription(SubPath, "Enter in this entity open craft menu");
+			pAsset->SetIndexTitle(SubPath, "合成");
+			pAsset->SetIndexDescription(SubPath, "进入此区域开始合成");
 			pAsset->SetIndexBorderIndex(SubPath, 7);
 			pAsset->SetIndexBorderColor(SubPath, vec4(1.0f, 164.0f/255.0f, 0.0f, 1.0f));
 
 			SubPath = CAsset_ZoneType::SubPath_Index(pAsset->AddIndex());
-			pAsset->SetIndexTitle(SubPath, "GameRoom");
-			pAsset->SetIndexDescription(SubPath, "Enter in this entity check starting game");
+			pAsset->SetIndexTitle(SubPath, "游戏区");
+			pAsset->SetIndexDescription(SubPath, "进入此区域加入游戏");
 			pAsset->SetIndexBorderIndex(SubPath, 8);
 			pAsset->SetIndexBorderColor(SubPath, vec4(1.0f, 164.0f/255.0f, 0.0f, 1.0f));
 
 			SubPath = CAsset_ZoneType::SubPath_Index(pAsset->AddIndex());
-			pAsset->SetIndexTitle(SubPath, "WhiteRoom");
-			pAsset->SetIndexDescription(SubPath, "Enter in this entity check whitelisting");
+			pAsset->SetIndexTitle(SubPath, "白房间");
+			pAsset->SetIndexDescription(SubPath, "进入此区域检查白名单");
 			pAsset->SetIndexBorderIndex(SubPath, 9);
 			pAsset->SetIndexBorderColor(SubPath, vec4(1.0f, 164.0f/255.0f, 0.0f, 1.0f));
 
 			SubPath = CAsset_ZoneType::SubPath_Index(pAsset->AddIndex());
-			pAsset->SetIndexTitle(SubPath, "Quest");
-			pAsset->SetIndexDescription(SubPath, "Enter in this entity open quest menu");
+			pAsset->SetIndexTitle(SubPath, "任务");
+			pAsset->SetIndexDescription(SubPath, "任务区");
 			pAsset->SetIndexBorderIndex(SubPath, 10);
 			pAsset->SetIndexBorderColor(SubPath, vec4(1.0f, 164.0f/255.0f, 0.0f, 1.0f));
 
 			SubPath = CAsset_ZoneType::SubPath_Index(pAsset->AddIndex());
-			pAsset->SetIndexTitle(SubPath, "Water");
-			pAsset->SetIndexDescription(SubPath, "Enter in this entity used vel water");
+			pAsset->SetIndexTitle(SubPath, "水");
+			pAsset->SetIndexDescription(SubPath, "水水水淼");
 			pAsset->SetIndexBorderIndex(SubPath, 11);
 			pAsset->SetIndexBorderColor(SubPath, vec4(11.0f/255.0f, 173.0f/255.0f, 0.0f, 1.0f));
 
 			SubPath = CAsset_ZoneType::SubPath_Index(pAsset->AddIndex());
-			pAsset->SetIndexTitle(SubPath, "ClanDoor1");
-			pAsset->SetIndexDescription(SubPath, "Enter in this entity check door clan top 1");
+			pAsset->SetIndexTitle(SubPath, "1号公会大门");
+			pAsset->SetIndexDescription(SubPath, "1号公会大门");
 			pAsset->SetIndexBorderIndex(SubPath, 12);
 			pAsset->SetIndexBorderColor(SubPath, vec4(11.0f/255.0f, 173.0f/255.0f, 0.0f, 1.0f));
 
 			SubPath = CAsset_ZoneType::SubPath_Index(pAsset->AddIndex());
-			pAsset->SetIndexTitle(SubPath, "ClanDoor2");
-			pAsset->SetIndexDescription(SubPath, "Enter in this entity check door clan top 2");
+			pAsset->SetIndexTitle(SubPath, "2号公会大门");
+			pAsset->SetIndexDescription(SubPath, "2号公会大门");
 			pAsset->SetIndexBorderIndex(SubPath, 13);
 			pAsset->SetIndexBorderColor(SubPath, vec4(11.0f/255.0f, 173.0f/255.0f, 0.0f, 1.0f));
 
 			SubPath = CAsset_ZoneType::SubPath_Index(pAsset->AddIndex());
-			pAsset->SetIndexTitle(SubPath, "ClanChair1");
-			pAsset->SetIndexDescription(SubPath, "Enter in this entity added bonuses clan top 1");
+			pAsset->SetIndexTitle(SubPath, "1号公会的椅子");
+			pAsset->SetIndexDescription(SubPath, "1号公会的椅子");
 			pAsset->SetIndexBorderIndex(SubPath, 14);
 			pAsset->SetIndexBorderColor(SubPath, vec4(11.0f/255.0f, 173.0f/255.0f, 0.0f, 1.0f));
 
 			SubPath = CAsset_ZoneType::SubPath_Index(pAsset->AddIndex());
-			pAsset->SetIndexTitle(SubPath, "ClanChair2");
-			pAsset->SetIndexDescription(SubPath, "Enter in this entity added bonuses clan top 2");
+			pAsset->SetIndexTitle(SubPath, "2号公会椅子");
+			pAsset->SetIndexDescription(SubPath, "2号公会的椅子
 			pAsset->SetIndexBorderIndex(SubPath, 15);
 			pAsset->SetIndexBorderColor(SubPath, vec4(11.0f/255.0f, 173.0f/255.0f, 0.0f, 1.0f));
 				
 			SubPath = CAsset_ZoneType::SubPath_Index(pAsset->AddIndex());
-			pAsset->SetIndexTitle(SubPath, "ZoneDeath");
-			pAsset->SetIndexDescription(SubPath, "Enter you die ;)");
+			pAsset->SetIndexTitle(SubPath, "死亡区");
+			pAsset->SetIndexDescription(SubPath, "让你死 ;)");
 			pAsset->SetIndexBorderIndex(SubPath, 15);
 			pAsset->SetIndexBorderColor(SubPath, vec4(11.0f/255.0f, 173.0f/255.0f, 0.0f, 1.0f));
 			
 			SubPath = CAsset_ZoneType::SubPath_Index(pAsset->AddIndex());
-			pAsset->SetIndexTitle(SubPath, "ClanDoor3");
-			pAsset->SetIndexDescription(SubPath, "Enter in this entity check door clan top 3");
+			pAsset->SetIndexTitle(SubPath, "3号公会大门");
+			pAsset->SetIndexDescription(SubPath, "关门时只让3号公会的人进入");
 			pAsset->SetIndexBorderIndex(SubPath, 13);
 			pAsset->SetIndexBorderColor(SubPath, vec4(11.0f/255.0f, 173.0f/255.0f, 0.0f, 1.0f));
 			
 			SubPath = CAsset_ZoneType::SubPath_Index(pAsset->AddIndex());
-			pAsset->SetIndexTitle(SubPath, "ClanChair3");
-			pAsset->SetIndexDescription(SubPath, "Enter in this entity added bonuses clan top 3");
+			pAsset->SetIndexTitle(SubPath, "3号公会椅子");
+			pAsset->SetIndexDescription(SubPath, "你不会不知道是什么吧？我懒得翻译了");
 			pAsset->SetIndexBorderIndex(SubPath, 15);
 			pAsset->SetIndexBorderColor(SubPath, vec4(11.0f/255.0f, 173.0f/255.0f, 0.0f, 1.0f));	
 			
@@ -254,13 +254,13 @@ int main(int argc, char* argv[])
 			pAsset->SetIndexTitle(SubPath, "进入太空");
 			pAsset->SetIndexDescription(SubPath, "进入太空");
 			pAsset->SetIndexBorderIndex(SubPath, 19);
-			pAsset->SetIndexBorderColor(SubPath, vec4(1.0f, 164.0f/255.0f, 0.0f, 1.0f));
+			pAsset->SetIndexBorderColor(SubPath, vec4(255.0f, 164.0f/255.0f, 9.0f, 218.0f));
 			
 			SubPath = CAsset_ZoneType::SubPath_Index(pAsset->AddIndex());
 			pAsset->SetIndexTitle(SubPath, "离开太空");
 			pAsset->SetIndexDescription(SubPath, "离开太空");
 			pAsset->SetIndexBorderIndex(SubPath, 20);
-			pAsset->SetIndexBorderColor(SubPath, vec4(1.0f, 164.0f/255.0f, 0.0f, 1.0f));
+			pAsset->SetIndexBorderColor(SubPath, vec4(255.0f, 164.0f/255.0f, 9.0f, 218.0f));
 		}
 		//EntityType, No Register Spawn
 		{

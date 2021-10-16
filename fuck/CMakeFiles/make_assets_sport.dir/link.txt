@@ -1,0 +1,1 @@
+/usr/bin/c++   -std=c++11 -O3 -DNDEBUG  -rdynamic CMakeFiles/make_assets_sport.dir/src/make_assets_sport.cpp.o  -o build/release/linux/make_assets/make_assets_sport  build/release/linux/lib/libteeuniverse_tools.a build/release/linux/lib/libteeuniverse_shared.a -licui18n -licuuc 
