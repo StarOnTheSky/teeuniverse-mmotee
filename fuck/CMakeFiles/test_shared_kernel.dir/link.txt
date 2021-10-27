@@ -1,1 +1,0 @@
-/usr/bin/c++   -std=c++11 -O3 -DNDEBUG  -rdynamic CMakeFiles/test_shared_kernel.dir/src/unittest/shared_kernel.cpp.o  -o build/release/linux/test/test_shared_kernel  build/release/linux/lib/libteeuniverse_shared.a -licui18n -licuuc 

@@ -1,1 +1,0 @@
-/usr/bin/c++   -std=c++11 -O3 -DNDEBUG  -rdynamic CMakeFiles/tupinfo.dir/src/tupinfo.cpp.o  -o build/release/linux/tupinfo/tupinfo  build/release/linux/lib/libteeuniverse_tools.a build/release/linux/lib/libteeuniverse_shared.a -licui18n -licuuc 

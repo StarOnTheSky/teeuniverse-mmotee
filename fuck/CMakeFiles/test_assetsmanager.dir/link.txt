@@ -1,1 +1,0 @@
-/usr/bin/c++   -std=c++11 -O3 -DNDEBUG  -rdynamic CMakeFiles/test_assetsmanager.dir/src/unittest/assetsmanager.cpp.o  -o build/release/linux/test/test_assetsmanager  build/release/linux/lib/libteeuniverse_shared.a -licui18n -licuuc 

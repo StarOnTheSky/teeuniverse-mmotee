@@ -1,1 +1,0 @@
-/usr/bin/c++   -std=c++11 -O3 -DNDEBUG  -rdynamic CMakeFiles/make_assets_teeworlds.dir/src/make_assets_teeworlds.cpp.o  -o build/release/linux/make_assets/make_assets_teeworlds  build/release/linux/lib/libteeuniverse_tools.a build/release/linux/lib/libteeuniverse_shared.a -licui18n -licuuc 
