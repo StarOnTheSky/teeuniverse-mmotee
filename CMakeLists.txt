@@ -432,6 +432,7 @@ make_assets(teeworlds)
 make_assets(ddnet)
 make_assets(infclass)
 make_assets(openfng)
+make_assets(mmotee)
 make_assets(ninslash)
 make_assets(sport)
 
