@@ -56,7 +56,7 @@ int main(int argc, char* argv[])
 		CAssetPath ImageZonesDamagePath = CreateNewImage(pKernel.get(), PackageId, "damage", "images/univ_infclass/damage.png", CStorage::TYPE_ALL, 16, 16, true, 0);
 		CAssetPath ImageZonesTeleportationPath = CreateNewImage(pKernel.get(), PackageId, "teleportation", "images/univ_infclass/teleportation.png", CStorage::TYPE_ALL, 16, 16, true, 0);
 		CAssetPath ImageZonesBonusPath = CreateNewImage(pKernel.get(), PackageId, "bonus", "images/univ_infclass/bonus.png", CStorage::TYPE_ALL, 16, 16, true, 0);
-		CAssetPath ImageEntitiesPath = CreateNewImage(pKernel.get(), PackageId, "entities", "images/univ_infclass/entities.png", CStorage::TYPE_ALL, 4, 4);
+		CAssetPath ImageEntitiesPath = CreateNewImage(pKernel.get(), PackageId, "entities", "images/univ_infclass/entities.png", CStorage::TYPE_ALL, 4, 4, true, 0);
 		pKernel->AssetsManager()->SetAssetValue_Hard<>(ImageEntitiesPath, CSubPath::Null(), CAsset_Image::TEXELSIZE, 768);
 			
 		//Zone, damage
@@ -142,11 +142,13 @@ int main(int argc, char* argv[])
 			SubPath = CAsset_ZoneType::SubPath_Index(pAsset->AddIndex());
 			pAsset->SetIndexTitle(SubPath, "无效果");
 			
+			/*
 			SubPath = CAsset_ZoneType::SubPath_Index(pAsset->AddIndex());
 			pAsset->SetIndexTitle(SubPath, "没用的");
 			pAsset->SetIndexDescription(SubPath, "Humans get +5 points each time they accumulated 60 seconds by staying inside this zone");
 			pAsset->SetIndexBorderIndex(SubPath, 1);
 			pAsset->SetIndexBorderColor(SubPath, vec4(148.0f/255.0f, 0.0f, 1.0f, 1.0f));
+			*/
 
 			SubPath = CAsset_ZoneType::SubPath_Index(pAsset->AddIndex());
 			pAsset->SetIndexTitle(SubPath, "商店");
@@ -192,7 +194,7 @@ int main(int argc, char* argv[])
 
 			SubPath = CAsset_ZoneType::SubPath_Index(pAsset->AddIndex());
 			pAsset->SetIndexTitle(SubPath, "白房间");
-			pAsset->SetIndexDescription(SubPath, "进入此区域检查白名单");
+			pAsset->SetIndexDescription(SubPath, "进入此区域检查白房间门票");
 			pAsset->SetIndexBorderIndex(SubPath, 9);
 			pAsset->SetIndexBorderColor(SubPath, vec4(1.0f, 164.0f/255.0f, 0.0f, 1.0f));
 
@@ -228,13 +230,13 @@ int main(int argc, char* argv[])
 
 			SubPath = CAsset_ZoneType::SubPath_Index(pAsset->AddIndex());
 			pAsset->SetIndexTitle(SubPath, "2号公会椅子");
-			pAsset->SetIndexDescription(SubPath, "2号公会的椅子
+			pAsset->SetIndexDescription(SubPath, "2号公会的椅子");
 			pAsset->SetIndexBorderIndex(SubPath, 15);
 			pAsset->SetIndexBorderColor(SubPath, vec4(11.0f/255.0f, 173.0f/255.0f, 0.0f, 1.0f));
 				
 			SubPath = CAsset_ZoneType::SubPath_Index(pAsset->AddIndex());
 			pAsset->SetIndexTitle(SubPath, "死亡区");
-			pAsset->SetIndexDescription(SubPath, "让你死 ;)");
+			pAsset->SetIndexDescription(SubPath, "让你死");
 			pAsset->SetIndexBorderIndex(SubPath, 15);
 			pAsset->SetIndexBorderColor(SubPath, vec4(11.0f/255.0f, 173.0f/255.0f, 0.0f, 1.0f));
 			
