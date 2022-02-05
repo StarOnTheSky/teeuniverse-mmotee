@@ -24,12 +24,12 @@ jobs:
 
         - name: "Ubuntu x64"
           os: ubuntu-latest
-          cmake-args: -G "Unix Makefiles" -DUSE_HARFBUZZ=OFF -DUSE_CONAN=OFF
+          cmake-args: -G "Unix Makefiles" -DUSE_HARFBUZZ=ON -DUSE_CONAN=OFF
           build-args: --parallel
           package-file: "*.zip"
           env:
             CFLAGS: -Wdeclaration-after-statement -Wduplicated-branches -Werror
-            CXXFLAGS: -Wduplicated-branches -Werror
+            CXXFLAGS: -Wduplicated-branches -Wno-error
 
         - name: "macOS 11"
           os: macos-11
@@ -38,7 +38,7 @@ jobs:
           package-file: "*.zip"
           env:
             CFLAGS: -Wdeclaration-after-statement
-            CXXFLAGS: -Wduplicated-branches -Werror
+            CXXFLAGS: -Wduplicated-branches -Wno-error
 
     steps:
     - uses: actions/checkout@v2
