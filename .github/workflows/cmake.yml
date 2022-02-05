@@ -81,14 +81,14 @@ jobs:
         #brew update
         #brew install sdl2 icu4c freetype harfbuzz
 
-        vcpkg install icu harfbuzz sdl2 opengl
+        vcpkg install icu harfbuzz[core,icu] sdl2 opengl freetype
         vcpkg integrate install
 
     - name: Prepare Windows
       if: contains(matrix.os, 'windows')
       run: |
-        vcpkg install icu harfbuzz sdl2 opengl
-        vcpkg install icu harfbuzz sdl2 opengl --triplet=x64-windows
+        vcpkg install icu harfbuzz[core.icu] sdl2 opengl freetype
+        vcpkg install icu harfbuzz[core,icu] sdl2 opengl freetype --triplet=x64-windows
         vcpkg integrate install
 
     - name: Build
