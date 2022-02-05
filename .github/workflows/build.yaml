@@ -24,7 +24,7 @@ jobs:
 
         - name: "Ubuntu x64"
           os: ubuntu-latest
-          cmake-args: -G "Unix Makefiles" -DUSE_HARFBUZZ=ON -DUSE_CONAN=OFF
+          cmake-args: -G "Unix Makefiles" -DUSE_HARFBUZZ=OFF -DUSE_CONAN=OFF
           build-args: --parallel
           package-file: "*.zip"
           env:
