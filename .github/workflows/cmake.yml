@@ -59,8 +59,8 @@ jobs:
       run: |
         #sudo port update
         #sudo port install cmake git freetype harfbuzz harfbuzz-icu libsdl2 icu
-        sudo brew update
-        sudo brew install sdl2 icu4c freetype harfbuzz
+        brew update
+        brew install sdl2 icu4c freetype harfbuzz
 
     - name: Build
       env: ${{ matrix.env }}
