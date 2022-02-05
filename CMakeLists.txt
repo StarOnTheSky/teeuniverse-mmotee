@@ -27,6 +27,9 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${PROJECT_SOURCE_DIR}/modules)
 # DEPENDENCIES
 ########################################################################
 
+set(CMAKE_TOOLCHAIN_FILE ${CMAKE_CURRENT_SOURCE_DIR}/vcpkg/scripts/buildsystems/vcpkg.cmake
+  CACHE STRING "Vcpkg toolchain file")
+
 find_package(SDL2)
 find_package(OpenGL)
 find_package(Freetype)
@@ -420,6 +423,7 @@ make_assets(infclass)
 make_assets(openfng)
 make_assets(ninslash)
 make_assets(sport)
+make_assets(mmotee)
 
 message(STATUS " * tools ready for compilation")
 
