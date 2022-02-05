@@ -13,7 +13,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, macos-latest, macos-11, windows-latest]
+        os: [ubuntu-latest, macos-latest, macos-11, windows-latest, windows-latest]
         include:
         - name: "Ubuntu-Latest x86_64"
           os: ubuntu-latest
