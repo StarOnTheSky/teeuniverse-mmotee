@@ -1,4 +1,4 @@
-name: Build
+name: Editor Build
 
 on:
   push:
@@ -10,9 +10,10 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [windows-latest]
+        os: [windows-latest, ubuntu-latest, macos-11]
         include:
-        - os: windows-latest
+        - name: "Windows x64"
+          os: windows-latest
           cmake-args: -G "Visual Studio 16 2019" -A x64 -DUSE_HARFBUZZ=OFF -DUSE_CONAN=ON
           package-file: "*-win64.zip"
           fancy: false
@@ -20,6 +21,24 @@ jobs:
             CFLAGS: /WX
             CXXFLAGS: /WX
             LDFLAGS: /WX
+
+        - name: "Ubuntu x64"
+          os: ubuntu-latest
+          cmake-args: -G "Unix Makefiles"
+          build-args: --parallel
+          package-file: *.zip
+          env:
+            CFLAGS: -Wdeclaration-after-statement -Wduplicated-branches -Werror
+            CXXFLAGS: -Wduplicated-branches -Werror
+
+        - name: "macOS 11"
+          os: macos-11
+          cmake-args: -G "Unix Makefiles"
+          build-args: --parallel
+          package-file: *.zip
+          env:
+            CFLAGS: -Wdeclaration-after-statement -Wduplicated-branches -Werror
+            CXXFLAGS: -Wduplicated-branches -Werror
 
     steps:
     - uses: actions/checkout@v2
