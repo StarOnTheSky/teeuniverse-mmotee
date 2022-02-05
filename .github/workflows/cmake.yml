@@ -13,7 +13,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, macos-latest, macos-11, windows-latest, windows-latest]
+        os: [ubuntu-latest, macos-latest, macos-11, windows-latest, windows-2019]
         include:
         - name: "Ubuntu-Latest x86_64"
           os: ubuntu-latest
@@ -52,7 +52,7 @@ jobs:
             LDFLAGS: /WX
 
         - name: "Windows x86"
-          os: windows-latest
+          os: windows-2019
           cmake-args: -G "Visual Studio 16 2019" -A Win32
           package-file: teeuniverse-win32.zip
           env:
