@@ -24,7 +24,7 @@ jobs:
 
         - name: "Ubuntu x64"
           os: ubuntu-latest
-          cmake-args: -G "Unix Makefiles" -DUSE_HARFBUZZ=OFF -DUSE_CONAN=ON
+          cmake-args: -G "Unix Makefiles" -DUSE_HARFBUZZ=OFF -DUSE_CONAN=OFF
           build-args: --parallel
           package-file: "*.zip"
           env:
@@ -37,7 +37,7 @@ jobs:
           build-args: --parallel
           package-file: "*.zip"
           env:
-            CFLAGS: -Wdeclaration-after-statement -Wduplicated-branches -Werror
+            CFLAGS: -Wdeclaration-after-statement
             CXXFLAGS: -Wduplicated-branches -Werror
 
     steps:
@@ -48,6 +48,13 @@ jobs:
     - name: Install Conan
       id: conan
       uses: turtlebrowser/get-conan@main
+
+    - name: Prepare Linux
+      if: contains(matrix.os, 'ubuntu')
+      run: |
+        sudo apt-get update -y
+        sudo apt-get install pkg-config cmake libfreetype6-dev libsdl2-dev libicu-dev libssl-dev libcurl4-openssl-dev -y
+        sudo apt-get install libboost-dev libmariadbclient-dev libmysqlcppconn-dev libopus-dev libopusfile-dev -y
 
     - name: Build in release mode
       env: ${{ matrix.env }}
