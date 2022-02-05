@@ -13,7 +13,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, macos-latest, macos-11]
+        os: [ubuntu-latest, macos-latest, macos-11, windows-latest]
         include:
         - name: "Ubuntu-Latest x86_64"
           os: ubuntu-latest
@@ -41,6 +41,25 @@ jobs:
           env:
             CFLAGS: -Wdeclaration-after-statement -Wduplicated-branches -Werror
             CXXFLAGS: -Wduplicated-branches -Werror
+
+        - name: "Windows x64"
+          os: windows-latest
+          cmake-args: -G "Visual Studio 16 2019" -A x64
+          package-file: teeuniverse-win64.zip
+          env:
+            CFLAGS: /WX
+            CXXFLAGS: /WX
+            LDFLAGS: /WX
+
+        - name: "Windows x86"
+          os: windows-latest
+          cmake-args: -G "Visual Studio 16 2019" -A Win32
+          package-file: teeuniverse-win32.zip
+          env:
+            CFLAGS: /WX
+            CXXFLAGS: /WX
+            LDFLAGS: /WX
+
     steps:
     - name: Checkout submodules
       uses: actions/checkout@v2
@@ -65,6 +84,13 @@ jobs:
         vcpkg install icu harfbuzz sdl2 opengl
         vcpkg integrate install
 
+    - name: Prepare Windows
+      if: contains(matrix.os, 'windows')
+      run: |
+        vcpkg install icu harfbuzz sdl2 opengl
+        vcpkg install icu harfbuzz sdl2 opengl --triplet=x64-windows
+        vcpkg integrate install
+
     - name: Build
       env: ${{ matrix.env }}
       run: |
@@ -85,6 +111,14 @@ jobs:
       run: |
         cd build/build/release
         mv macos teeuniverse
+        zip -r9 ${{ matrix.package-file }} teeuniverse
+        mv ${{ matrix.package-file }} ${{ github.workspace }}
+
+    - name: Package(macOS)
+      if: contains(matrix.os, 'windows')
+      run: |
+        cd build/build/release
+        mv windows teeuniverse
         zip -r9 ${{ matrix.package-file }} teeuniverse
         mv ${{ matrix.package-file }} ${{ github.workspace }}
 
