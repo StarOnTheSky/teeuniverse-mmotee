@@ -1,4 +1,4 @@
-name: Client & Server Build
+name: Editor Build
 
 on:
   push:
@@ -61,9 +61,9 @@ jobs:
         #sudo port install cmake git freetype harfbuzz harfbuzz-icu libsdl2 icu
         #brew update
         #brew install sdl2 icu4c freetype harfbuzz
-        ./vcpkg/bootstrap-vcpkg.sh
-        ./vcpkg/vcpkg install icu harfbuzz sdl2 opengl
-        ./vcpkg/vcpkg integrate install
+
+        vcpkg install icu harfbuzz sdl2 opengl
+        vcpkg integrate install
 
     - name: Build
       env: ${{ matrix.env }}
