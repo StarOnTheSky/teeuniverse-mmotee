@@ -2,9 +2,9 @@ name: Client & Server Build
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
   pull_request:
-    branches: [ master ]
+    branches: [ main ]
 
 jobs:
   build-cmake:
@@ -46,6 +46,7 @@ jobs:
       uses: actions/checkout@v2
       with:
         submodules: true
+        
     - name: Prepare Linux
       if: contains(matrix.os, 'ubuntu')
       run: |
