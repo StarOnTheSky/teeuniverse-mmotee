@@ -28,7 +28,7 @@ jobs:
           build-args: --parallel
           package-file: "*.zip"
           env:
-            CFLAGS: -Wdeclaration-after-statement -Wduplicated-branches -Werror
+            CFLAGS: -Wdeclaration-after-statement -Wduplicated-branches -Wno-error
             CXXFLAGS: -Wduplicated-branches -Wno-error
 
         - name: "macOS 11"
