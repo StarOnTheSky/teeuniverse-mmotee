@@ -57,7 +57,7 @@ jobs:
         sudo apt-get install libboost-dev libmariadbclient-dev libmysqlcppconn-dev libopus-dev libopusfile-dev -y
     - name: Prepare macOS
       if: contains(matrix.os, 'macos')
-      runs: |
+      run: |
         brew update
         brew install icu freetype sdl2 
 
