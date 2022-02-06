@@ -59,7 +59,7 @@ jobs:
       if: contains(matrix.os, 'macos')
       run: |
         brew update
-        brew install icu freetype sdl2 
+        brew install icu4c freetype sdl2 
 
     - name: Build in release mode
       env: ${{ matrix.env }}
