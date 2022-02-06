@@ -39,7 +39,7 @@ jobs:
           env:
             CFLAGS: -Wdeclaration-after-statement
             CXXFLAGS: -Wno-error
-
+  
     steps:
     - uses: actions/checkout@v2
       with:
