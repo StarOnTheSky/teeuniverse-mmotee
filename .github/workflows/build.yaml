@@ -10,7 +10,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [windows-latest, ubuntu-latest, macos-11]
+        os: [windows-latest, ubuntu-latest, macos-latest]
         include:
         - name: "Windows x64"
           os: windows-latest
