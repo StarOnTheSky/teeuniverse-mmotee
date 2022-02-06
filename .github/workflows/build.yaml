@@ -33,7 +33,7 @@ jobs:
 
         - name: "macOS latest"
           os: macos-latest
-          cmake-args: -G "Unix Makefiles" -DUSE_HARFBUZZ=OFF -DUSE_CONAN=ON
+          cmake-args: -G "Unix Makefiles" -DUSE_HARFBUZZ=OFF -DUSE_CONAN=OFF
           build-args: --parallel
           package-file: "*.zip"
           env:
@@ -55,7 +55,12 @@ jobs:
         sudo apt-get update -y
         sudo apt-get install pkg-config cmake libfreetype6-dev libsdl2-dev libicu-dev libssl-dev libcurl4-openssl-dev -y
         sudo apt-get install libboost-dev libmariadbclient-dev libmysqlcppconn-dev libopus-dev libopusfile-dev -y
-
+    - name: Prepare macOS
+      if: contains(matrix.os, 'macos')
+      runs: |
+      brew update
+      brew install icu freetype sdl2 
+      
     - name: Build in release mode
       env: ${{ matrix.env }}
       run: |
