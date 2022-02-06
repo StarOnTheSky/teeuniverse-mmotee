@@ -31,7 +31,7 @@ jobs:
             CFLAGS: -Wdeclaration-after-statement -Wduplicated-branches -Wno-error
             CXXFLAGS: -Wduplicated-branches -Wno-error
 
-        - name: "macOS 11"
+        - name: "macOS latest"
           os: macos-latest
           cmake-args: -G "Unix Makefiles" -DUSE_HARFBUZZ=OFF -DUSE_CONAN=ON
           build-args: --parallel
