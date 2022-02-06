@@ -26,7 +26,7 @@ jobs:
           os: ubuntu-latest
           cmake-args: -G "Unix Makefiles" -DUSE_HARFBUZZ=OFF -DUSE_CONAN=OFF
           build-args: --parallel
-          package-file: "*.zip"
+          package-file: "*-Linux.zip"
           env:
             CFLAGS: -Wdeclaration-after-statement -Wduplicated-branches -Wno-error
             CXXFLAGS: -Wduplicated-branches -Wno-error
