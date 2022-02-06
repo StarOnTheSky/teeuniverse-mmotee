@@ -32,14 +32,14 @@ jobs:
             CXXFLAGS: -Wduplicated-branches -Wno-error
 
         - name: "macOS 11"
-          os: macos-11
+          os: macos-latest
           cmake-args: -G "Unix Makefiles" -DUSE_HARFBUZZ=OFF -DUSE_CONAN=ON
           build-args: --parallel
           package-file: "*.zip"
           env:
             CFLAGS: -Wdeclaration-after-statement
             CXXFLAGS: -Wno-error
-  
+
     steps:
     - uses: actions/checkout@v2
       with:
