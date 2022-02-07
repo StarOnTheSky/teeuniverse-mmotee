@@ -51,7 +51,7 @@ int main(int argc, char* argv[])
 		PackageId = pKernel->AssetsManager()->NewPackage("mmotee");
 		pKernel->AssetsManager()->SetPackageAuthor(PackageId, "Kurosio");
 		pKernel->AssetsManager()->SetPackageLicense(PackageId, "CC-BY-SA 3.0");
-		pKernel->AssetsManager()->SetPackageVersion(PackageId, "0.0.1");
+		pKernel->AssetsManager()->SetPackageVersion(PackageId, "0.0.2");
 		
 		CAssetPath ImageZonesDamagePath = CreateNewImage(pKernel.get(), PackageId, "damage", "images/univ_infclass/damage.png", CStorage::TYPE_ALL, 16, 16, true, 0);
 		CAssetPath ImageZonesTeleportationPath = CreateNewImage(pKernel.get(), PackageId, "teleportation", "images/univ_infclass/teleportation.png", CStorage::TYPE_ALL, 16, 16, true, 0);
@@ -222,7 +222,7 @@ int main(int argc, char* argv[])
 
 			SubPath = CAsset_ZoneType::SubPath_Index(pAsset->AddIndex());
 			pAsset->SetIndexTitle(SubPath, "1号公会的椅子");
-			pAsset->SetIndexDescription(SubPath, "1号公会的椅子")	;
+			pAsset->SetIndexDescription(SubPath, "1号公会的椅子");
 			pAsset->SetIndexBorderIndex(SubPath, 14);
 			pAsset->SetIndexBorderColor(SubPath, vec4(11.0f/255.0f, 173.0f/255.0f, 0.0f, 1.0f));
 
@@ -234,7 +234,7 @@ int main(int argc, char* argv[])
 				
 			SubPath = CAsset_ZoneType::SubPath_Index(pAsset->AddIndex());
 			pAsset->SetIndexTitle(SubPath, "死亡区");
-			pAsset->SetIndexDescription(SubPath, "让你死 ;)");
+			pAsset->SetIndexDescription(SubPath, "让你死");
 			pAsset->SetIndexBorderIndex(SubPath, 15);
 			pAsset->SetIndexBorderColor(SubPath, vec4(11.0f/255.0f, 173.0f/255.0f, 0.0f, 1.0f));
 			
@@ -261,6 +261,30 @@ int main(int argc, char* argv[])
 			pAsset->SetIndexDescription(SubPath, "离开太空");
 			pAsset->SetIndexBorderIndex(SubPath, 20);
 			pAsset->SetIndexBorderColor(SubPath, vec4(255.0f, 164.0f/255.0f, 9.0f, 218.0f));
+
+			SubPath = CAsset_ZoneType::SubPath_Index(pAsset->AddIndex());
+			pAsset->SetIndexTitle(SubPath, "4号公会大门");
+			pAsset->SetIndexDescription(SubPath, "关门时只让3号公会的人进入");
+			pAsset->SetIndexBorderIndex(SubPath, 13);
+			pAsset->SetIndexBorderColor(SubPath, vec4(11.0f/255.0f, 173.0f/255.0f, 0.0f, 1.0f));
+			
+			SubPath = CAsset_ZoneType::SubPath_Index(pAsset->AddIndex());
+			pAsset->SetIndexTitle(SubPath, "4号公会椅子");
+			pAsset->SetIndexDescription(SubPath, "你不会不知道是什么吧？我懒得翻译了");
+			pAsset->SetIndexBorderIndex(SubPath, 15);
+			pAsset->SetIndexBorderColor(SubPath, vec4(11.0f/255.0f, 173.0f/255.0f, 0.0f, 1.0f));	
+
+			SubPath = CAsset_ZoneType::SubPath_Index(pAsset->AddIndex());
+			pAsset->SetIndexTitle(SubPath, "5号公会大门");
+			pAsset->SetIndexDescription(SubPath, "关门时只让3号公会的人进入");
+			pAsset->SetIndexBorderIndex(SubPath, 13);
+			pAsset->SetIndexBorderColor(SubPath, vec4(11.0f/255.0f, 173.0f/255.0f, 0.0f, 1.0f));
+			
+			SubPath = CAsset_ZoneType::SubPath_Index(pAsset->AddIndex());
+			pAsset->SetIndexTitle(SubPath, "5号公会椅子");
+			pAsset->SetIndexDescription(SubPath, "你不会不知道是什么吧？我懒得翻译了");
+			pAsset->SetIndexBorderIndex(SubPath, 15);
+			pAsset->SetIndexBorderColor(SubPath, vec4(11.0f/255.0f, 173.0f/255.0f, 0.0f, 1.0f));	
 		}
 		//EntityType, No Register Spawn
 		{
@@ -291,7 +315,7 @@ int main(int argc, char* argv[])
 			CAssetPath GizmoPath;
 			CAssetPath AssetPath;
 			
-			CREATE_SPRITE_PATH(GizmoPath, PackageId, "gizmoInfectedSpawn", ImageEntitiesPath, 3, 2, 1, 2);
+			CREATE_SPRITE_PATH(GizmoPath, PackageId, "gizmoBotSpawn", ImageEntitiesPath, 3, 2, 1, 2);
 			
 			CAsset_EntityType* pAsset = pKernel->AssetsManager()->NewAsset_Hard<CAsset_EntityType>(&AssetPath, PackageId);
 			pAsset->SetName("Guard");
@@ -303,7 +327,7 @@ int main(int argc, char* argv[])
 			CAssetPath GizmoPath;
 			CAssetPath AssetPath;
 			
-			CREATE_SPRITE_PATH(GizmoPath, PackageId, "gizmoInfectedSpawn", ImageEntitiesPath, 3, 2, 1, 2);
+			CREATE_SPRITE_PATH(GizmoPath, PackageId, "gizmoBotSpawn", ImageEntitiesPath, 3, 2, 1, 2);
 			
 			CAsset_EntityType* pAsset = pKernel->AssetsManager()->NewAsset_Hard<CAsset_EntityType>(&AssetPath, PackageId);
 			pAsset->SetName("Bot1Type");
@@ -327,7 +351,7 @@ int main(int argc, char* argv[])
 			CAssetPath GizmoPath;
 			CAssetPath AssetPath;
 			
-			CREATE_SPRITE_PATH(GizmoPath, PackageId, "gizmoInfectedSpawn", ImageEntitiesPath, 3, 2, 1, 2);
+			CREATE_SPRITE_PATH(GizmoPath, PackageId, "gizmoBotSpawn", ImageEntitiesPath, 3, 2, 1, 2);
 			
 			CAsset_EntityType* pAsset = pKernel->AssetsManager()->NewAsset_Hard<CAsset_EntityType>(&AssetPath, PackageId);
 			pAsset->SetName("Bot2Type");
@@ -339,7 +363,7 @@ int main(int argc, char* argv[])
 			CAssetPath GizmoPath;
 			CAssetPath AssetPath;
 			
-			CREATE_SPRITE_PATH(GizmoPath, PackageId, "gizmoInfectedSpawn", ImageEntitiesPath, 3, 2, 1, 2);
+			CREATE_SPRITE_PATH(GizmoPath, PackageId, "gizmoBotSpawn", ImageEntitiesPath, 3, 2, 1, 2);
 			
 			CAsset_EntityType* pAsset = pKernel->AssetsManager()->NewAsset_Hard<CAsset_EntityType>(&AssetPath, PackageId);
 			pAsset->SetName("Bot3Type");
@@ -363,7 +387,7 @@ int main(int argc, char* argv[])
 			CAssetPath GizmoPath;
 			CAssetPath AssetPath;
 			
-			CREATE_SPRITE_PATH(GizmoPath, PackageId, "gizmoInfectedSpawn", ImageEntitiesPath, 3, 2, 1, 2);
+			CREATE_SPRITE_PATH(GizmoPath, PackageId, "gizmoBotSpawn", ImageEntitiesPath, 3, 2, 1, 2);
 			
 			CAsset_EntityType* pAsset = pKernel->AssetsManager()->NewAsset_Hard<CAsset_EntityType>(&AssetPath, PackageId);
 			pAsset->SetName("BossSpawn");
@@ -387,7 +411,7 @@ int main(int argc, char* argv[])
 			CAssetPath GizmoPath;
 			CAssetPath AssetPath;
 			
-			CREATE_SPRITE_PATH(GizmoPath, PackageId, "gizmoInfectedSpawn", ImageEntitiesPath, 3, 2, 1, 2);
+			CREATE_SPRITE_PATH(GizmoPath, PackageId, "gizmoBotSpawn", ImageEntitiesPath, 3, 2, 1, 2);
 			
 			CAsset_EntityType* pAsset = pKernel->AssetsManager()->NewAsset_Hard<CAsset_EntityType>(&AssetPath, PackageId);
 			pAsset->SetName("NPCSHOP");
@@ -399,7 +423,7 @@ int main(int argc, char* argv[])
 			CAssetPath GizmoPath;
 			CAssetPath AssetPath;
 			
-			CREATE_SPRITE_PATH(GizmoPath, PackageId, "gizmoInfectedSpawn", ImageEntitiesPath, 3, 2, 1, 2);
+			CREATE_SPRITE_PATH(GizmoPath, PackageId, "gizmoBotSpawn", ImageEntitiesPath, 3, 2, 1, 2);
 			
 			CAsset_EntityType* pAsset = pKernel->AssetsManager()->NewAsset_Hard<CAsset_EntityType>(&AssetPath, PackageId);
 			pAsset->SetName("NPCWQUEST");
@@ -411,7 +435,7 @@ int main(int argc, char* argv[])
 			CAssetPath GizmoPath;
 			CAssetPath AssetPath;
 			
-			CREATE_SPRITE_PATH(GizmoPath, PackageId, "gizmoInfectedSpawn", ImageEntitiesPath, 3, 2, 1, 2);
+			CREATE_SPRITE_PATH(GizmoPath, PackageId, "gizmoBotSpawn", ImageEntitiesPath, 3, 2, 1, 2);
 			
 			CAsset_EntityType* pAsset = pKernel->AssetsManager()->NewAsset_Hard<CAsset_EntityType>(&AssetPath, PackageId);
 			pAsset->SetName("NPCWCRAFT");
@@ -435,7 +459,7 @@ int main(int argc, char* argv[])
 			CAssetPath GizmoPath;
 			CAssetPath AssetPath;
 			
-			CREATE_SPRITE_PATH(GizmoPath, PackageId, "gizmoInfectedSpawn", ImageEntitiesPath, 3, 2, 1, 2);
+			CREATE_SPRITE_PATH(GizmoPath, PackageId, "gizmoBotSpawn", ImageEntitiesPath, 3, 2, 1, 2);
 			
 			CAsset_EntityType* pAsset = pKernel->AssetsManager()->NewAsset_Hard<CAsset_EntityType>(&AssetPath, PackageId);
 			pAsset->SetName("NPCFARMER");
@@ -475,6 +499,42 @@ int main(int argc, char* argv[])
 			
 			CAsset_EntityType* pAsset = pKernel->AssetsManager()->NewAsset_Hard<CAsset_EntityType>(&AssetPath, PackageId);
 			pAsset->SetName("ClanSp2");
+			pAsset->SetCollisionRadius(42.0f);
+			pAsset->SetGizmoPath(GizmoPath);
+		}
+		//ClanSpawn3
+		{
+			CAssetPath GizmoPath;
+			CAssetPath AssetPath;
+			
+			CREATE_SPRITE_PATH(GizmoPath, PackageId, "gizmoHumanSpawn", ImageEntitiesPath, 3, 2, 1, 2);
+			
+			CAsset_EntityType* pAsset = pKernel->AssetsManager()->NewAsset_Hard<CAsset_EntityType>(&AssetPath, PackageId);
+			pAsset->SetName("ClanSp3");
+			pAsset->SetCollisionRadius(42.0f);
+			pAsset->SetGizmoPath(GizmoPath);
+		}
+		//ClanSpawn4
+		{
+			CAssetPath GizmoPath;
+			CAssetPath AssetPath;
+			
+			CREATE_SPRITE_PATH(GizmoPath, PackageId, "gizmoHumanSpawn", ImageEntitiesPath, 3, 2, 1, 2);
+			
+			CAsset_EntityType* pAsset = pKernel->AssetsManager()->NewAsset_Hard<CAsset_EntityType>(&AssetPath, PackageId);
+			pAsset->SetName("ClanSp4");
+			pAsset->SetCollisionRadius(42.0f);
+			pAsset->SetGizmoPath(GizmoPath);
+		}
+		//ClanSpawn5
+		{
+			CAssetPath GizmoPath;
+			CAssetPath AssetPath;
+			
+			CREATE_SPRITE_PATH(GizmoPath, PackageId, "gizmoHumanSpawn", ImageEntitiesPath, 3, 2, 1, 2);
+			
+			CAsset_EntityType* pAsset = pKernel->AssetsManager()->NewAsset_Hard<CAsset_EntityType>(&AssetPath, PackageId);
+			pAsset->SetName("ClanSp5");
 			pAsset->SetCollisionRadius(42.0f);
 			pAsset->SetGizmoPath(GizmoPath);
 		}

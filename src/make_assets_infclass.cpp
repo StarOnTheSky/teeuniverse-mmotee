@@ -56,7 +56,7 @@ int main(int argc, char* argv[])
 		CAssetPath ImageZonesDamagePath = CreateNewImage(pKernel.get(), PackageId, "damage", "images/univ_infclass/damage.png", CStorage::TYPE_ALL, 16, 16, true, 0);
 		CAssetPath ImageZonesTeleportationPath = CreateNewImage(pKernel.get(), PackageId, "teleportation", "images/univ_infclass/teleportation.png", CStorage::TYPE_ALL, 16, 16, true, 0);
 		CAssetPath ImageZonesBonusPath = CreateNewImage(pKernel.get(), PackageId, "bonus", "images/univ_infclass/bonus.png", CStorage::TYPE_ALL, 16, 16, true, 0);
-		CAssetPath ImageEntitiesPath = CreateNewImage(pKernel.get(), PackageId, "entities", "images/univ_infclass/entities.png", CStorage::TYPE_ALL, 4, 4);
+		CAssetPath ImageEntitiesPath = CreateNewImage(pKernel.get(), PackageId, "entities", "images/univ_infclass/entities.png", CStorage::TYPE_ALL, 4, 4, true, 0);
 		pKernel->AssetsManager()->SetAssetValue_Hard<>(ImageEntitiesPath, CSubPath::Null(), CAsset_Image::TEXELSIZE, 768);
 			
 		//Zone, damage
