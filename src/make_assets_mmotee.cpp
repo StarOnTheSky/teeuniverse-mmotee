@@ -53,84 +53,288 @@ int main(int argc, char* argv[])
 		pKernel->AssetsManager()->SetPackageLicense(PackageId, "CC-BY-SA 3.0");
 		pKernel->AssetsManager()->SetPackageVersion(PackageId, "0.0.2");
 		
-		CAssetPath ImageZonesDamagePath = CreateNewImage(pKernel.get(), PackageId, "damage", "images/univ_infclass/damage.png", CStorage::TYPE_ALL, 16, 16, true, 0);
-		CAssetPath ImageZonesTeleportationPath = CreateNewImage(pKernel.get(), PackageId, "teleportation", "images/univ_infclass/teleportation.png", CStorage::TYPE_ALL, 16, 16, true, 0);
 		CAssetPath ImageZonesBonusPath = CreateNewImage(pKernel.get(), PackageId, "bonus", "images/univ_infclass/bonus.png", CStorage::TYPE_ALL, 16, 16, true, 0);
 		CAssetPath ImageEntitiesPath = CreateNewImage(pKernel.get(), PackageId, "entities", "images/univ_infclass/entities.png", CStorage::TYPE_ALL, 4, 4, true, 0);
 		pKernel->AssetsManager()->SetAssetValue_Hard<>(ImageEntitiesPath, CSubPath::Null(), CAsset_Image::TEXELSIZE, 768);
-			
-		//Zone, damage
+
+		// EntityType, Shotgun
 		{
+			CAssetPath GizmoPath;
 			CAssetPath AssetPath;
-			CSubPath SubPath;
-			
-			CAsset_ZoneType* pAsset = pKernel->AssetsManager()->NewAsset_Hard<CAsset_ZoneType>(&AssetPath, PackageId);
-			pAsset->SetName("icDamage");
-			pAsset->SetImagePath(ImageZonesDamagePath);
-			
-			int GroupId_Death = pAsset->AddGroup();
-			int GroupId_State = pAsset->AddGroup();
-			
-			pAsset->SetGroup(CAsset_ZoneType::SubPath_Group(GroupId_Death), "Death");
-			pAsset->SetGroup(CAsset_ZoneType::SubPath_Group(GroupId_State), "State change");
-			
-			SubPath = CAsset_ZoneType::SubPath_Index(pAsset->AddIndex());
-			pAsset->SetIndexTitle(SubPath, "No damage");
-			
-			SubPath = CAsset_ZoneType::SubPath_Index(pAsset->AddIndex());
-			pAsset->SetIndexTitle(SubPath, "Death zone");
-			pAsset->SetIndexDescription(SubPath, "Any player touching this zone dies instantly");
-			pAsset->SetIndexBorderIndex(SubPath, 1);
-			pAsset->SetIndexBorderColor(SubPath, vec4(1.0f, 0.0f, 0.0f, 1.0f));
-			pAsset->SetIndexGroup(SubPath, GroupId_Death);
-			
-			SubPath = CAsset_ZoneType::SubPath_Index(pAsset->AddIndex());
-			pAsset->SetIndexTitle(SubPath, "Death zone (non-undead only)");
-			pAsset->SetIndexDescription(SubPath, "Any player touching this zone, that is not an undead, dies instantly");
-			pAsset->SetIndexBorderIndex(SubPath, 1);
-			pAsset->SetIndexBorderColor(SubPath, vec4(1.0f, 164.0f/255.0f, 0.0f, 1.0f));
-			pAsset->SetIndexGroup(SubPath, GroupId_Death);
-			
-			SubPath = CAsset_ZoneType::SubPath_Index(pAsset->AddIndex());
-			pAsset->SetIndexTitle(SubPath, "Death zone (infected only)");
-			pAsset->SetIndexDescription(SubPath, "Any infected touching this zone dies instantly");
-			pAsset->SetIndexBorderIndex(SubPath, 1);
-			pAsset->SetIndexBorderColor(SubPath, vec4(157.0f/255.0f, 0.0f, 1.0f, 1.0f));
-			pAsset->SetIndexGroup(SubPath, GroupId_Death);
-			
-			SubPath = CAsset_ZoneType::SubPath_Index(pAsset->AddIndex());
-			pAsset->SetIndexTitle(SubPath, "Infected area");
-			pAsset->SetIndexDescription(SubPath, "Any human touching this zone is immediately infected");
-			pAsset->SetIndexBorderIndex(SubPath, 2);
-			pAsset->SetIndexBorderColor(SubPath, vec4(11.0f/255.0f, 173.0f/255.0f, 0.0f, 1.0f));
-			pAsset->SetIndexGroup(SubPath, GroupId_State);
-		}	
-		//Zone, teleportation
-		{
-			CAssetPath AssetPath;
-			CSubPath SubPath;
-			
-			CAsset_ZoneType* pAsset = pKernel->AssetsManager()->NewAsset_Hard<CAsset_ZoneType>(&AssetPath, PackageId);
-			pAsset->SetName("icTele");
-			pAsset->SetImagePath(ImageZonesTeleportationPath);
-			
-			SubPath = CAsset_ZoneType::SubPath_Index(pAsset->AddIndex());
-			pAsset->SetIndexTitle(SubPath, "All accepted");
-			pAsset->SetIndexDescription(SubPath, "Witches can spawn infected and scientist can be teleported in this zone");
-			
-			SubPath = CAsset_ZoneType::SubPath_Index(pAsset->AddIndex());
-			pAsset->SetIndexTitle(SubPath, "No witch spawn");
-			pAsset->SetIndexDescription(SubPath, "Witches can't spawn infected in this zone. This zone is nice to place over spikes and other dangerous parts of the map");
-			pAsset->SetIndexBorderIndex(SubPath, 1);
-			pAsset->SetIndexBorderColor(SubPath, vec4(1.0f, 0.0f, 0.0f, 1.0f));
-			
-			SubPath = CAsset_ZoneType::SubPath_Index(pAsset->AddIndex());
-			pAsset->SetIndexTitle(SubPath, "No scientist teleport");
-			pAsset->SetIndexDescription(SubPath, "Scientists can't be teleported in this zone");
-			pAsset->SetIndexBorderIndex(SubPath, 2);
-			pAsset->SetIndexBorderColor(SubPath, vec4(0.0f, 1.0f, 164.0f/255.0f, 1.0f));
+
+			CREATE_SPRITE_PATH(GizmoPath, PackageId, "gizmoShotgun", ImageEntitiesPath, 0, 2, 1, 1);
+
+			CAsset_EntityType *pAsset = pKernel->AssetsManager()->NewAsset_Hard<CAsset_EntityType>(&AssetPath, PackageId);
+			pAsset->SetName("shotgun");
+			pAsset->SetCollisionRadius(20.0f);
+			pAsset->SetGizmoPath(GizmoPath);
 		}
-		//Zone, bonus
+		// EntityType, Grenade
+		{
+			CAssetPath GizmoPath;
+			CAssetPath AssetPath;
+
+			CREATE_SPRITE_PATH(GizmoPath, PackageId, "gizmoGrenade", ImageEntitiesPath, 1, 2, 1, 1);
+
+			CAsset_EntityType *pAsset = pKernel->AssetsManager()->NewAsset_Hard<CAsset_EntityType>(&AssetPath, PackageId);
+			pAsset->SetName("grenade");
+			pAsset->SetCollisionRadius(20.0f);
+			pAsset->SetGizmoPath(GizmoPath);
+		}
+		// EntityType, Rifle
+		{
+			CAssetPath GizmoPath;
+			CAssetPath AssetPath;
+
+			CREATE_SPRITE_PATH(GizmoPath, PackageId, "gizmoRifle", ImageEntitiesPath, 2, 2, 1, 1);
+
+			CAsset_EntityType *pAsset = pKernel->AssetsManager()->NewAsset_Hard<CAsset_EntityType>(&AssetPath, PackageId);
+			pAsset->SetName("rifle");
+			pAsset->SetCollisionRadius(20.0f);
+			pAsset->SetGizmoPath(GizmoPath);
+		}
+		// EntityType, Gun
+		{
+			CAssetPath GizmoPath;
+			CAssetPath AssetPath;
+
+			CREATE_SPRITE_PATH(GizmoPath, PackageId, "gizmoGun", ImageEntitiesPath, 0, 1, 1, 1);
+
+			CAsset_EntityType *pAsset = pKernel->AssetsManager()->NewAsset_Hard<CAsset_EntityType>(&AssetPath, PackageId);
+			pAsset->SetName("gun");
+			pAsset->SetCollisionRadius(20.0f);
+			pAsset->SetGizmoPath(GizmoPath);
+		}
+		// EntityType, Hammer
+		{
+			CAssetPath GizmoPath;
+			CAssetPath AssetPath;
+
+			CREATE_SPRITE_PATH(GizmoPath, PackageId, "gizmoHammer", ImageEntitiesPath, 1, 1, 1, 1);
+
+			CAsset_EntityType *pAsset = pKernel->AssetsManager()->NewAsset_Hard<CAsset_EntityType>(&AssetPath, PackageId);
+			pAsset->SetName("hammer");
+			pAsset->SetCollisionRadius(20.0f);
+			pAsset->SetGizmoPath(GizmoPath);
+		}
+		// EntityType, Ninja
+		{
+			CAssetPath GizmoPath;
+			CAssetPath AssetPath;
+
+			CREATE_SPRITE_PATH(GizmoPath, PackageId, "gizmoNinja", ImageEntitiesPath, 2, 1, 1, 1);
+
+			CAsset_EntityType *pAsset = pKernel->AssetsManager()->NewAsset_Hard<CAsset_EntityType>(&AssetPath, PackageId);
+			pAsset->SetName("ninja");
+			pAsset->SetCollisionRadius(20.0f);
+			pAsset->SetGizmoPath(GizmoPath);
+		}
+		// EntityType, Red Flag
+		{
+			CAssetPath GizmoPath;
+			CAssetPath AssetPath;
+
+			CREATE_SPRITE_PATH(GizmoPath, PackageId, "gizmoRedFlag", ImageEntitiesPath, 3, 0, 1, 2);
+
+			CAsset_EntityType *pAsset = pKernel->AssetsManager()->NewAsset_Hard<CAsset_EntityType>(&AssetPath, PackageId);
+			pAsset->SetName("redFlag");
+			pAsset->SetCollisionRadius(42.0f);
+			pAsset->SetGizmoPath(GizmoPath);
+		}
+		// EntityType, Blue Flag
+		{
+			CAssetPath GizmoPath;
+			CAssetPath AssetPath;
+
+			CREATE_SPRITE_PATH(GizmoPath, PackageId, "gizmoBlueFlag", ImageEntitiesPath, 3, 2, 1, 2);
+
+			CAsset_EntityType *pAsset = pKernel->AssetsManager()->NewAsset_Hard<CAsset_EntityType>(&AssetPath, PackageId);
+			pAsset->SetName("blueFlag");
+			pAsset->SetCollisionRadius(42.0f);
+			pAsset->SetGizmoPath(GizmoPath);
+		}
+		// EntityType, Heart
+		{
+			CAssetPath GizmoPath;
+			CAssetPath AssetPath;
+
+			CREATE_SPRITE_PATH(GizmoPath, PackageId, "gizmoHeart", ImageEntitiesPath, 0, 0, 1, 1);
+
+			CAsset_EntityType *pAsset = pKernel->AssetsManager()->NewAsset_Hard<CAsset_EntityType>(&AssetPath, PackageId);
+			pAsset->SetName("health");
+			pAsset->SetCollisionRadius(20.0f);
+			pAsset->SetGizmoPath(GizmoPath);
+		}
+		// EntityType, Armor
+		{
+			CAssetPath GizmoPath;
+			CAssetPath AssetPath;
+
+			CREATE_SPRITE_PATH(GizmoPath, PackageId, "gizmoHeart", ImageEntitiesPath, 1, 0, 1, 1);
+
+			CAsset_EntityType *pAsset = pKernel->AssetsManager()->NewAsset_Hard<CAsset_EntityType>(&AssetPath, PackageId);
+			pAsset->SetName("armor");
+			pAsset->SetCollisionRadius(20.0f);
+			pAsset->SetGizmoPath(GizmoPath);
+		}
+
+		// EntityType, Miner
+		{
+			CAssetPath GizmoPath;
+			CAssetPath AssetPath;
+
+			CREATE_SPRITE_PATH(GizmoPath, PackageId, "gizmoArmor", ImageEntitiesPath, 1, 0, 1, 1);
+
+			CAsset_EntityType *pAsset = pKernel->AssetsManager()->NewAsset_Hard<CAsset_EntityType>(&AssetPath, PackageId);
+			pAsset->SetName("Miner");
+			pAsset->SetCollisionRadius(42.0f);
+			pAsset->SetGizmoPath(GizmoPath);
+		}
+		// EntityType, Wood
+		{
+			CAssetPath GizmoPath;
+			CAssetPath AssetPath;
+
+			CREATE_SPRITE_PATH(GizmoPath, PackageId, "gizmoArmor", ImageEntitiesPath, 1, 0, 1, 1);
+
+			CAsset_EntityType *pAsset = pKernel->AssetsManager()->NewAsset_Hard<CAsset_EntityType>(&AssetPath, PackageId);
+			pAsset->SetName("Wood");
+			pAsset->SetCollisionRadius(42.0f);
+			pAsset->SetGizmoPath(GizmoPath);
+		}
+		// EntityType, ExitZone
+		{
+			CAssetPath GizmoPath;
+			CAssetPath AssetPath;
+
+			CREATE_SPRITE_PATH(GizmoPath, PackageId, "gizmoArmor", ImageEntitiesPath, 1, 0, 1, 1);
+
+			CAsset_EntityType *pAsset = pKernel->AssetsManager()->NewAsset_Hard<CAsset_EntityType>(&AssetPath, PackageId);
+			pAsset->SetName("ExitZone");
+			pAsset->SetCollisionRadius(42.0f);
+			pAsset->SetGizmoPath(GizmoPath);
+		}
+		// EntityType, Farm
+		{
+			CAssetPath GizmoPath;
+			CAssetPath AssetPath;
+
+			CREATE_SPRITE_PATH(GizmoPath, PackageId, "gizmoArmor", ImageEntitiesPath, 1, 0, 1, 1);
+
+			CAsset_EntityType *pAsset = pKernel->AssetsManager()->NewAsset_Hard<CAsset_EntityType>(&AssetPath, PackageId);
+			pAsset->SetName("Farm");
+			pAsset->SetCollisionRadius(42.0f);
+			pAsset->SetGizmoPath(GizmoPath);
+		}
+		// EntityType, InfoCl1
+		{
+			CAssetPath GizmoPath;
+			CAssetPath AssetPath;
+
+			CREATE_SPRITE_PATH(GizmoPath, PackageId, "gizmoArmor", ImageEntitiesPath, 1, 0, 1, 1);
+
+			CAsset_EntityType *pAsset = pKernel->AssetsManager()->NewAsset_Hard<CAsset_EntityType>(&AssetPath, PackageId);
+			pAsset->SetName("InfoCl1");
+			pAsset->SetCollisionRadius(42.0f);
+			pAsset->SetGizmoPath(GizmoPath);
+		}
+		// EntityType, InfoCl2
+		{
+			CAssetPath GizmoPath;
+			CAssetPath AssetPath;
+
+			CREATE_SPRITE_PATH(GizmoPath, PackageId, "gizmoArmor", ImageEntitiesPath, 1, 0, 1, 1);
+
+			CAsset_EntityType *pAsset = pKernel->AssetsManager()->NewAsset_Hard<CAsset_EntityType>(&AssetPath, PackageId);
+			pAsset->SetName("InfoCl2");
+			pAsset->SetCollisionRadius(42.0f);
+			pAsset->SetGizmoPath(GizmoPath);
+		}
+		// EntityType, InfoCl3
+		{
+			CAssetPath GizmoPath;
+			CAssetPath AssetPath;
+
+			CREATE_SPRITE_PATH(GizmoPath, PackageId, "gizmoArmor", ImageEntitiesPath, 1, 0, 1, 1);
+
+			CAsset_EntityType *pAsset = pKernel->AssetsManager()->NewAsset_Hard<CAsset_EntityType>(&AssetPath, PackageId);
+			pAsset->SetName("InfoCl3");
+			pAsset->SetCollisionRadius(42.0f);
+			pAsset->SetGizmoPath(GizmoPath);
+		}
+		// EntityType, InfoMaterials
+		{
+			CAssetPath GizmoPath;
+			CAssetPath AssetPath;
+
+			CREATE_SPRITE_PATH(GizmoPath, PackageId, "gizmoArmor", ImageEntitiesPath, 1, 0, 1, 1);
+
+			CAsset_EntityType *pAsset = pKernel->AssetsManager()->NewAsset_Hard<CAsset_EntityType>(&AssetPath, PackageId);
+			pAsset->SetName("IMater1");
+			pAsset->SetCollisionRadius(42.0f);
+			pAsset->SetGizmoPath(GizmoPath);
+		}
+		// EntityType, InfoMaterials
+		{
+			CAssetPath GizmoPath;
+			CAssetPath AssetPath;
+
+			CREATE_SPRITE_PATH(GizmoPath, PackageId, "gizmoArmor", ImageEntitiesPath, 1, 0, 1, 1);
+
+			CAsset_EntityType *pAsset = pKernel->AssetsManager()->NewAsset_Hard<CAsset_EntityType>(&AssetPath, PackageId);
+			pAsset->SetName("IMater2");
+			pAsset->SetCollisionRadius(42.0f);
+			pAsset->SetGizmoPath(GizmoPath);
+		}
+		// EntityType, InfoMaterials
+		{
+			CAssetPath GizmoPath;
+			CAssetPath AssetPath;
+
+			CREATE_SPRITE_PATH(GizmoPath, PackageId, "gizmoArmor", ImageEntitiesPath, 1, 0, 1, 1);
+
+			CAsset_EntityType *pAsset = pKernel->AssetsManager()->NewAsset_Hard<CAsset_EntityType>(&AssetPath, PackageId);
+			pAsset->SetName("IMater3");
+			pAsset->SetCollisionRadius(42.0f);
+			pAsset->SetGizmoPath(GizmoPath);
+		}
+		// EntityType, GetMaterial
+		{
+			CAssetPath GizmoPath;
+			CAssetPath AssetPath;
+
+			CREATE_SPRITE_PATH(GizmoPath, PackageId, "gizmoArmor", ImageEntitiesPath, 1, 0, 1, 1);
+
+			CAsset_EntityType *pAsset = pKernel->AssetsManager()->NewAsset_Hard<CAsset_EntityType>(&AssetPath, PackageId);
+			pAsset->SetName("wMater");
+			pAsset->SetCollisionRadius(42.0f);
+			pAsset->SetGizmoPath(GizmoPath);
+		}
+		// EntityType, GetMaterial
+		{
+			CAssetPath GizmoPath;
+			CAssetPath AssetPath;
+
+			CREATE_SPRITE_PATH(GizmoPath, PackageId, "gizmoArmor", ImageEntitiesPath, 1, 0, 1, 1);
+
+			CAsset_EntityType *pAsset = pKernel->AssetsManager()->NewAsset_Hard<CAsset_EntityType>(&AssetPath, PackageId);
+			pAsset->SetName("MaterFarm");
+			pAsset->SetCollisionRadius(42.0f);
+			pAsset->SetGizmoPath(GizmoPath);
+		}
+		// EntityType, MoneyBag
+		{
+			CAssetPath GizmoPath;
+			CAssetPath AssetPath;
+
+			CREATE_SPRITE_PATH(GizmoPath, PackageId, "gizmoArmor", ImageEntitiesPath, 1, 0, 1, 1);
+
+			CAsset_EntityType *pAsset = pKernel->AssetsManager()->NewAsset_Hard<CAsset_EntityType>(&AssetPath, PackageId);
+			pAsset->SetName("MoneyBag");
+			pAsset->SetCollisionRadius(42.0f);
+			pAsset->SetGizmoPath(GizmoPath);
+		}
+
 		{
 			CAssetPath AssetPath;
 			CSubPath SubPath;
