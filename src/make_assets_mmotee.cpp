@@ -340,7 +340,7 @@ int main(int argc, char* argv[])
 			CSubPath SubPath;
 			
 			CAsset_ZoneType* pAsset = pKernel->AssetsManager()->NewAsset_Hard<CAsset_ZoneType>(&AssetPath, PackageId);
-			pAsset->SetName("MMOTee区域");
+			pAsset->SetName("MMOTee");
 			pAsset->SetImagePath(ImageZonesBonusPath);
 			
 			SubPath = CAsset_ZoneType::SubPath_Index(pAsset->AddIndex());
@@ -468,7 +468,7 @@ int main(int argc, char* argv[])
 
 			SubPath = CAsset_ZoneType::SubPath_Index(pAsset->AddIndex());
 			pAsset->SetIndexTitle(SubPath, "4号公会大门");
-			pAsset->SetIndexDescription(SubPath, "关门时只让3号公会的人进入");
+			pAsset->SetIndexDescription(SubPath, "关门时只让4号公会的人进入");
 			pAsset->SetIndexBorderIndex(SubPath, 13);
 			pAsset->SetIndexBorderColor(SubPath, vec4(11.0f/255.0f, 173.0f/255.0f, 0.0f, 1.0f));
 			
@@ -480,7 +480,7 @@ int main(int argc, char* argv[])
 
 			SubPath = CAsset_ZoneType::SubPath_Index(pAsset->AddIndex());
 			pAsset->SetIndexTitle(SubPath, "5号公会大门");
-			pAsset->SetIndexDescription(SubPath, "关门时只让3号公会的人进入");
+			pAsset->SetIndexDescription(SubPath, "关门时只让5号公会的人进入");
 			pAsset->SetIndexBorderIndex(SubPath, 13);
 			pAsset->SetIndexBorderColor(SubPath, vec4(11.0f/255.0f, 173.0f/255.0f, 0.0f, 1.0f));
 			
